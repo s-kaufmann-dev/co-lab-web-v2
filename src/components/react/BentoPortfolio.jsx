@@ -1,86 +1,77 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { cn } from "../../styles/utils";
 
-export const BentoGrid = ({
-  className,
-  children
-}) => {
+export const BentoGrid = ({ className, children }) => {
   return (
-    <div
-      className={cn(
-        "grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto ",
-        className
-      )}>
+    <div className={cn("grid md:auto-rows-[20rem] grid-cols-1 md:grid-cols-3 gap-3 max-w-7xl mx-auto", className)}>
       {children}
     </div>
   );
 };
 
-export const BentoGridItem = ({
-  className,
-  title,
-  description,
-  header,
-  icon,
-  category
-}) => {
+export const BentoGridItem = ({ className, title, description, header, category }) => {
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -4 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={cn(
-        "row-span-1 rounded-3xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4",
+        "row-span-1 group/bento hover:shadow-2xl transition-all duration-500 p-5 bg-neutral-950 border border-white/[0.06] hover:border-accent/40 justify-between flex flex-col space-y-4 cursor-pointer overflow-hidden relative",
         className
-      )}>
+      )}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover/bento:opacity-100 transition-opacity duration-500" />
       {header}
-      <div className="group-hover/bento:translate-x-2 transition duration-200">
+      <div className="group-hover/bento:translate-x-2 transition duration-300 relative z-10">
         <div className="text-[0.6rem] uppercase tracking-widest text-accent mb-2 font-mono">
           {category}
         </div>
-        <div className="font-bold text-white mb-2 mt-2 text-xl leading-none tracking-tighter uppercase">
+        <div className="font-black text-white mb-2 mt-2 text-xl leading-none tracking-tighter uppercase">
           {title}
         </div>
-        <div className="font-normal text-neutral-400 text-xs">
+        <div className="font-normal text-neutral-500 text-xs leading-relaxed">
           {description}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 const items = [
   {
-    title: "Neural Synergy",
-    description: "AI-Driven E-Commerce Ecosystem",
-    category: "Automation",
+    title: "Velvet & Stone",
+    description: "Luxuriöse Markenidentität mit handgefertigter Typografie und immersiven Scroll-Erlebnissen.",
+    category: "Brand Design",
     className: "md:col-span-2",
-    header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-black overflow-hidden relative border border-white/5">
-      <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2232&auto=format&fit=crop" className="object-cover w-full h-full opacity-40 group-hover/bento:scale-110 transition-transform duration-700" />
+    header: <div className="flex flex-1 w-full h-full min-h-[6rem] bg-neutral-900 overflow-hidden relative">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2264&auto=format&fit=crop" className="object-cover w-full h-full opacity-30 group-hover/bento:scale-105 group-hover/bento:opacity-50 transition-all duration-700" />
     </div>,
   },
   {
-    title: "Onyx Framework",
-    description: "Next-Gen Design System",
-    category: "Architecture",
+    title: "Prism Works",
+    description: "Minimalistisches Produktdesign mit mutigen Kontrasten und interaktiven 3D-Elementen.",
+    category: "Web Design",
     className: "md:col-span-1",
-    header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-black overflow-hidden relative border border-white/5">
-      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" className="object-cover w-full h-full opacity-40 group-hover/bento:scale-110 transition-transform duration-700" />
+    header: <div className="flex flex-1 w-full h-full min-h-[6rem] bg-neutral-900 overflow-hidden relative">
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" className="object-cover w-full h-full opacity-30 group-hover/bento:scale-105 group-hover/bento:opacity-50 transition-all duration-700" />
     </div>,
   },
   {
-    title: "Aureus Labs",
-    description: "Financial Intelligence Platform",
-    category: "SaaS",
+    title: "Lumina Studio",
+    description: "Ganzheitliche Digitalstrategie – vom Mood Board bis zur fertigen Premium-Website.",
+    category: "Creative Direction",
     className: "md:col-span-1",
-    header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-black overflow-hidden relative border border-white/5">
-       <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2264&auto=format&fit=crop" className="object-cover w-full h-full opacity-40 group-hover/bento:scale-110 transition-transform duration-700" />
+    header: <div className="flex flex-1 w-full h-full min-h-[6rem] bg-neutral-900 overflow-hidden relative">
+       <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=2232&auto=format&fit=crop" className="object-cover w-full h-full opacity-30 group-hover/bento:scale-105 group-hover/bento:opacity-50 transition-all duration-700" />
     </div>,
   },
   {
-    title: "Vibe Engine",
-    description: "Generative Motion Systems",
-    category: "Creative Code",
+    title: "Norden Digital",
+    description: "Brutalistisches Redesign mit animierten Übergängen, Custom Cursor und Micro-Interactions.",
+    category: "Visual Identity",
     className: "md:col-span-2",
-    header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-black overflow-hidden relative border border-white/5">
-      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" className="object-cover w-full h-full opacity-40 group-hover/bento:scale-110 transition-transform duration-700" />
+    header: <div className="flex flex-1 w-full h-full min-h-[6rem] bg-neutral-900 overflow-hidden relative">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" className="object-cover w-full h-full opacity-30 group-hover/bento:scale-105 group-hover/bento:opacity-50 transition-all duration-700" />
     </div>,
   },
 ];
@@ -92,11 +83,11 @@ export default function BentoPortfolio() {
           <div>
             <span className="text-accent text-sm font-mono uppercase tracking-[0.3em] mb-4 block">Selected Works</span>
             <h2 className="text-[12vw] md:text-[8vw] font-black uppercase tracking-tighter leading-[0.8]">
-              Case<br/>Studies
+              Design<br/>Portfolio
             </h2>
           </div>
           <p className="text-neutral-500 font-medium text-lg max-w-sm border-l border-white/20 pl-6">
-            Exploring the boundaries of digital craft through strategic precision and technical mastery.
+            Jedes Projekt ist ein visuelles Statement – von der Typografie bis zur letzten Micro-Animation.
           </p>
        </div>
       <BentoGrid className="max-w-none">
@@ -106,7 +97,7 @@ export default function BentoPortfolio() {
             title={item.title}
             description={item.description}
             header={item.header}
-            className={cn(item.className, "rounded-none border-white/10 hover:border-accent/50")}
+            className={item.className}
             category={item.category}
           />
         ))}

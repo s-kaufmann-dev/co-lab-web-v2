@@ -6,6 +6,9 @@ import ServicesSection from '../components/react/ContainerScroll.jsx';
 import ShaderBackground from '../components/react/ShaderBackground.jsx';
 import AnimatedTestimonials from '../components/react/AnimatedTestimonials.jsx';
 import InteractiveFooter from '../components/react/InteractiveFooter.jsx';
+import StoryViewer from '../components/react/StoryViewer.jsx';
+import AutomationSection from '../components/react/AutomationSection.jsx';
+import MicroSaasSection from '../components/react/MicroSaasSection.jsx';
 import { GradientGlowButton, Highlighter } from '../components/react/InteractiveElements.jsx';
 ---
 
@@ -17,42 +20,55 @@ import { GradientGlowButton, Highlighter } from '../components/react/Interactive
 	<section id="about" class="py-48 px-[5vw] bg-black border-y border-white/5 relative z-10">
 		<div class="max-w-7xl">
 			<div class="mb-24">
-				<span class="text-accent text-sm font-mono uppercase tracking-[0.5em] mb-8 block">About the Matrix</span>
+				<span class="text-accent text-sm font-mono uppercase tracking-[0.5em] mb-8 block">Über Uns</span>
 				<h2 class="text-[12vw] md:text-[8vw] font-black uppercase tracking-[-0.05em] leading-[0.8]">
-					We build the <br/>
-					<span class="text-accent">Neural Future</span> <br/>
-					of the web.
+					Wir gestalten die <br/>
+					<span class="text-accent">visuelle Zukunft</span> <br/>
+					des Webs.
 				</h2>
 			</div>
 			
 			<div class="grid md:grid-cols-2 gap-24 items-start">
 				<div class="space-y-12">
 					<p class="text-3xl md:text-4xl text-white font-medium leading-[1.1] tracking-tighter">
-						Co-Lab-Web is a high-performance digital boutique operating at the <Highlighter client:only="react">edge of design</Highlighter> and artificial intelligence.
+						Co-Lab-Web ist eine Design-Boutique an der Schnittstelle von <Highlighter client:only="react">visueller Exzellenz</Highlighter> und intelligenter Technologie.
 					</p>
 					<p class="text-xl text-neutral-500 leading-relaxed max-w-md">
-						We don't follow trends. We architect systems that combine <span class="text-white">brutalist aesthetics</span> with <span class="text-white">intelligent automation</span> to deliver unfair advantages for our partners.
+						Wir folgen keinen Trends. Wir setzen sie. Mit mutigem Design, präzisem Code und dem Anspruch, jedes Projekt zu einem digitalen Erlebnis zu machen.
 					</p>
 				</div>
 				
 				<div class="flex flex-col gap-12 md:items-end">
 					<div class="text-left md:text-right space-y-2">
-						<p class="text-neutral-500 font-mono text-xs uppercase tracking-widest">Established // 2024</p>
-						<p class="text-neutral-500 font-mono text-xs uppercase tracking-widest">Logic // Brutalism & Performance</p>
+						<p class="text-neutral-500 font-mono text-xs uppercase tracking-widest">Gegründet // 2024</p>
+						<p class="text-neutral-500 font-mono text-xs uppercase tracking-widest">Fokus // Design & Performance</p>
 						<p class="text-neutral-500 font-mono text-xs uppercase tracking-widest">Status // Digital Native</p>
 					</div>
-					<GradientGlowButton client:only="react" className="w-fit">Start Collaboration</GradientGlowButton>
+					<GradientGlowButton client:only="react" className="w-fit">Projekt Starten</GradientGlowButton>
 				</div>
 			</div>
 		</div>
 	</section>
 
+	<!-- Service 01: High-End Design -->
 	<ServicesSection client:only="react" />
 
+	<!-- Company DNA: Interactive Story Viewer -->
+	<StoryViewer client:only="react" />
+
+	<!-- Design Portfolio -->
 	<BentoPortfolio client:only="react" />
 
+	<!-- Service 02: Automation -->
+	<AutomationSection client:only="react" />
+
+	<!-- Service 03: Micro-SaaS -->
+	<MicroSaasSection client:only="react" />
+
+	<!-- Testimonials -->
 	<AnimatedTestimonials client:only="react" />
 
+	<!-- Footer -->
 	<footer class="bg-black border-t border-white/5 relative z-10">
 		<InteractiveFooter client:only="react" />
 		
@@ -61,7 +77,7 @@ import { GradientGlowButton, Highlighter } from '../components/react/Interactive
 				<div class="max-w-xl">
 					<h2 class="text-4xl font-black uppercase tracking-[-0.06em] mb-4 leading-none">Co-Lab-Web</h2>
 					<p class="text-neutral-600 text-sm font-medium leading-tight mb-6">
-						Designed & engineered for those who demand excellence.
+						Designt & entwickelt für höchste Ansprüche.
 					</p>
 					<div class="flex gap-3 items-center">
 						<div class="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
@@ -77,14 +93,14 @@ import { GradientGlowButton, Highlighter } from '../components/react/Interactive
 						<a href="#" class="text-sm font-bold uppercase tracking-tighter hover:text-accent transition-colors">GitHub</a>
 					</div>
 					<div class="flex flex-col gap-4">
-						<span class="text-[0.6rem] uppercase tracking-[0.4em] text-accent font-mono">Contact</span>
+						<span class="text-[0.6rem] uppercase tracking-[0.4em] text-accent font-mono">Kontakt</span>
 						<a href="mailto:hello@co-lab-web.de" class="text-sm font-bold uppercase tracking-tighter hover:text-accent transition-colors">hello@co-lab-web.de</a>
-						<a href="#" class="text-sm font-bold uppercase tracking-tighter hover:text-accent transition-colors">Book a Call</a>
+						<a href="#" class="text-sm font-bold uppercase tracking-tighter hover:text-accent transition-colors">Termin buchen</a>
 					</div>
 					<div class="flex-col gap-4 hidden md:flex">
 						<span class="text-[0.6rem] uppercase tracking-[0.4em] text-accent font-mono">Legal</span>
-						<a href="#" class="text-xs font-mono uppercase tracking-widest text-neutral-600 hover:text-white transition-colors">Imprint</a>
-						<a href="#" class="text-xs font-mono uppercase tracking-widest text-neutral-600 hover:text-white transition-colors">Privacy</a>
+						<a href="#" class="text-xs font-mono uppercase tracking-widest text-neutral-600 hover:text-white transition-colors">Impressum</a>
+						<a href="#" class="text-xs font-mono uppercase tracking-widest text-neutral-600 hover:text-white transition-colors">Datenschutz</a>
 					</div>
 				</div>
 			</div>

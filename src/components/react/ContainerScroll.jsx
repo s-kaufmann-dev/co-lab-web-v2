@@ -87,10 +87,11 @@ export default function ServicesSection() {
     <ContainerScroll
       titleComponent={
         <>
+          <span className="text-accent text-sm font-mono uppercase tracking-[0.3em] mb-6 block">Service // 01</span>
           <h1 className="text-4xl font-semibold text-white">
-            Transformieren Sie Ihr Business mit <br />
+            Websites, die <br />
             <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none uppercase tracking-tighter">
-              High-End Services
+              Eindruck hinterlassen
             </span>
           </h1>
         </>
