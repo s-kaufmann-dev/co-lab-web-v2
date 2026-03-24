@@ -9,6 +9,7 @@ import InteractiveFooter from '../components/react/InteractiveFooter.jsx';
 import StoryViewer from '../components/react/StoryViewer.jsx';
 import AutomationSection from '../components/react/AutomationSection.jsx';
 import MicroSaasSection from '../components/react/MicroSaasSection.jsx';
+import DesignLandscape from '../components/react/DesignLandscape.jsx';
 import { GradientGlowButton, Highlighter } from '../components/react/InteractiveElements.jsx';
 ---
 
@@ -49,6 +50,9 @@ import { GradientGlowButton, Highlighter } from '../components/react/Interactive
 			</div>
 		</div>
 	</section>
+
+	<!-- Interactive 3D Design Landscape -->
+	<DesignLandscape client:only="react" />
 
 	<!-- Service 01: High-End Design -->
 	<ServicesSection client:only="react" />

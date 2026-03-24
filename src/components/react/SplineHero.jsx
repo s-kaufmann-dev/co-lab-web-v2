@@ -1,6 +1,6 @@
 import React, { Suspense, useRef, useState, useEffect } from 'react';
-import Spline from '@splinetool/react-spline';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import ParticleField from './ParticleField';
 
 const orbConfigs = [
   { size: 180, color: 'rgba(0,255,102,0.15)', blur: 80, speed: 0.12, offset: { x: -200, y: -150 } },
@@ -30,12 +30,10 @@ function FloatingOrb({ config, mouseX, mouseY }) {
 
   return (
     <motion.div
-      style={{ x, y, width: config.size, height: config.size }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       animate={{
         scale: hovered ? 1.6 : 1,
-        filter: hovered ? `blur(${config.blur * 0.5}px)` : `blur(${config.blur}px)`,
       }}
       transition={{ type: 'spring', damping: 20, stiffness: 150 }}
       className="absolute rounded-full pointer-events-auto cursor-none"
@@ -47,7 +45,7 @@ function FloatingOrb({ config, mouseX, mouseY }) {
           ? config.color.replace(/[\d.]+\)$/, '0.5)')
           : config.color,
         mixBlendMode: 'screen',
-        filter: `blur(${config.blur}px)`,
+        filter: `blur(${hovered ? config.blur * 0.5 : config.blur}px)`,
       }}
     />
   );
@@ -71,23 +69,8 @@ export default function SplineHero() {
       onMouseMove={handleMouseMove}
       className="relative h-[110vh] w-full flex items-center justify-center overflow-hidden bg-black"
     >
-      {/* 3D Scene Background */}
-      <div className="absolute inset-0 z-0">
-        <Suspense
-          fallback={
-            <div className="w-full h-full bg-black flex items-center justify-center text-white font-mono text-xs uppercase tracking-widest">
-              <motion.span
-                animate={{ opacity: [0.3, 1, 0.3] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                Loading Digital Organism...
-              </motion.span>
-            </div>
-          }
-        >
-          <Spline scene="https://prod.spline.design/6Wq1Q7YAnWfEL7ic/scene.splinecode" />
-        </Suspense>
-      </div>
+      {/* Particle Shader Background - dots flee cursor */}
+      <ParticleField />
 
       {/* Floating Reactive Orbs */}
       <div className="absolute inset-0 z-[5] flex items-center justify-center pointer-events-none">
