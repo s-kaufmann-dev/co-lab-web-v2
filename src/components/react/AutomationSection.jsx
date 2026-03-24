@@ -33,7 +33,7 @@ export default function AutomationSection() {
   const [hoveredIdx, setHoveredIdx] = useState(null);
 
   return (
-    <section className="py-32 bg-black px-[5vw] relative overflow-hidden">
+    <section className="py-16 md:py-32 bg-black px-[5vw] relative overflow-hidden">
       {/* Background grid pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
@@ -41,7 +41,7 @@ export default function AutomationSection() {
       }} />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-24 gap-8">
           <div>
             <span className="text-accent text-sm font-mono uppercase tracking-[0.3em] mb-4 block">Service // 02</span>
             <h2 className="text-[10vw] md:text-[6vw] font-black uppercase tracking-tighter leading-[0.8]">

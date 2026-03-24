@@ -41,16 +41,16 @@ export default function StoryViewer() {
   const [activeStory, setActiveStory] = useState(0);
 
   return (
-    <section className="py-32 bg-black px-[5vw] border-y border-white/5">
+    <section className="py-16 md:py-32 bg-black px-[5vw] border-y border-white/5">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-20">
+        <div className="mb-12 md:mb-20">
           <span className="text-accent text-sm font-mono uppercase tracking-[0.3em] mb-4 block">Inside Co-Lab-Web</span>
           <h2 className="text-[10vw] md:text-[6vw] font-black uppercase tracking-tighter leading-[0.8]">
             Unsere<br/>DNA
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 items-start">
+        <div className="grid md:grid-cols-[1fr_1.5fr] gap-8 md:gap-12 items-start">
           {/* Interactive Desktop / Navigation */}
           <div className="relative">
             <div className="bg-neutral-900 border border-white/10 rounded-2xl overflow-hidden">
@@ -101,7 +101,7 @@ export default function StoryViewer() {
           </div>
 
           {/* Story content display */}
-          <div className="min-h-[400px] flex items-center">
+          <div className="min-h-[250px] md:min-h-[400px] flex items-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStory}

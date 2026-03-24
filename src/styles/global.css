@@ -42,6 +42,13 @@
   @apply w-12 h-12;
 }
 
+/* Hide cursor on touch devices */
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
 /* Smooth Scroll Layout */
 html.lenis {
   height: auto;

@@ -78,8 +78,8 @@ const items = [
 
 export default function BentoPortfolio() {
   return (
-    <div className="py-32 bg-black px-[5vw]">
-       <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+    <div className="py-16 md:py-32 bg-black px-[5vw]">
+       <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-24 gap-8">
           <div>
             <span className="text-accent text-sm font-mono uppercase tracking-[0.3em] mb-4 block">Selected Works</span>
             <h2 className="text-[12vw] md:text-[8vw] font-black uppercase tracking-tighter leading-[0.8]">

@@ -31,9 +31,9 @@ export default function MicroSaasSection() {
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <section className="py-32 bg-black px-[5vw] border-y border-white/5 relative overflow-hidden">
+    <section className="py-16 md:py-32 bg-black px-[5vw] border-y border-white/5 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-24 gap-8">
           <div>
             <span className="text-accent text-sm font-mono uppercase tracking-[0.3em] mb-4 block">Service // 03</span>
             <h2 className="text-[10vw] md:text-[6vw] font-black uppercase tracking-tighter leading-[0.8]">

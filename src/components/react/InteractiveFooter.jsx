@@ -61,7 +61,7 @@ export default function InteractiveFooter() {
       className="relative w-full bg-black overflow-hidden"
     >
       {/* Interactive 3D Scene */}
-      <div className="relative h-[60vh] w-full">
+      <div className="relative h-[35vh] md:h-[60vh] w-full">
         <Suspense
           fallback={
             <div className="w-full h-full bg-black flex items-center justify-center">
@@ -113,7 +113,7 @@ export default function InteractiveFooter() {
             >
               <ScrambleText
                 text={stat.value}
-                className="text-4xl md:text-5xl font-black text-accent uppercase tracking-tighter block mb-2"
+                className="text-3xl md:text-5xl font-black text-accent uppercase tracking-tighter block mb-2"
               />
               <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 group-hover:text-white transition-colors">
                 {stat.label}

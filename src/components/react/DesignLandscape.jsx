@@ -6,7 +6,7 @@ export default function DesignLandscape() {
   return (
     <section className="relative bg-black border-y border-white/5 overflow-hidden">
       {/* Header */}
-      <div className="px-[5vw] pt-32 pb-8 relative z-10">
+      <div className="px-[5vw] pt-16 md:pt-32 pb-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end gap-8">
           <div>
             <span className="text-accent text-sm font-mono uppercase tracking-[0.3em] mb-4 block">
@@ -23,7 +23,7 @@ export default function DesignLandscape() {
       </div>
 
       {/* 3D Spline Scene */}
-      <div className="relative w-full h-[70vh] md:h-[80vh]">
+      <div className="relative w-full h-[40vh] md:h-[80vh]">
         <Suspense
           fallback={
             <div className="w-full h-full bg-black flex flex-col items-center justify-center gap-4">

@@ -32,14 +32,14 @@ export default function AnimatedTestimonials() {
   const prev = () => setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-32 bg-black px-[5vw] border-y border-white/5">
+    <section className="py-16 md:py-32 bg-black px-[5vw] border-y border-white/5">
       <div className="max-w-5xl mx-auto">
-        <div className="flex items-start gap-4 mb-16">
+        <div className="flex items-start gap-4 mb-8 md:mb-16">
           <span className="text-accent text-sm font-mono uppercase tracking-[0.3em]">What They Say</span>
         </div>
         
-        <div className="flex flex-col md:flex-row items-start gap-16">
-          <div className="flex-1 min-h-[280px]">
+        <div className="flex flex-col md:flex-row items-start gap-8 md:gap-16">
+          <div className="flex-1 min-h-[200px] md:min-h-[280px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -63,7 +63,7 @@ export default function AnimatedTestimonials() {
             </AnimatePresence>
           </div>
           
-          <div className="flex flex-col gap-4 items-center">
+          <div className="flex flex-row md:flex-col gap-4 items-center">
             <button 
               onClick={prev}
               className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-accent hover:border-accent hover:text-black transition-all duration-300"

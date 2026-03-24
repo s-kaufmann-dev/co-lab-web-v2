@@ -67,7 +67,7 @@ export default function SplineHero() {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative h-[110vh] w-full flex items-center justify-center overflow-hidden bg-black"
+      className="relative h-[85vh] md:h-[110vh] w-full flex items-center justify-center overflow-hidden bg-black"
     >
       {/* Particle Shader Background - dots flee cursor */}
       <ParticleField />
