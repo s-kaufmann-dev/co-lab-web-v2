@@ -62,7 +62,7 @@ const items = [
     category: "Creative Direction",
     className: "md:col-span-1",
     header: <div className="flex flex-1 w-full h-full min-h-[6rem] bg-neutral-900 overflow-hidden relative">
-       <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=2232&auto=format&fit=crop" className="object-cover w-full h-full opacity-30 group-hover/bento:scale-105 group-hover/bento:opacity-50 transition-all duration-700" />
+       <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070&auto=format&fit=crop" className="object-cover w-full h-full opacity-30 group-hover/bento:scale-105 group-hover/bento:opacity-50 transition-all duration-700" />
     </div>,
   },
   {

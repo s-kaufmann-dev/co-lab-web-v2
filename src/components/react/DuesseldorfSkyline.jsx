@@ -314,130 +314,230 @@ export default function DuesseldorfSkyline() {
       }
     }
 
-    // ── RHEINTURM — the star of the show ──
+    // ── RHEINTURM — realistic silhouette matching the real tower ──
     function drawRheinturm(W, H, t) {
       const y = H * HORIZON;
       const x = W * 0.52;
-      const towerH = H * HORIZON * 0.92; // nearly touches top
+      const towerH = H * HORIZON * 0.95;
       const topY = y - towerH;
 
-      // ── Shaft (tapered concrete column) ──
-      const baseW = 5;
-      const topW = 1.5;
-      ctx.fillStyle = '#0c1218';
+      // ── Concrete shaft — wider, tapered correctly ──
+      // The real Rheinturm tapers progressively: wide base → medium at platform → thin above
+      const baseHW = 7;     // half-width at base
+      const midHW = 4.5;    // half-width at platform level
+      const topHW = 2;      // half-width above restaurant
+      const antHW = 0.8;    // antenna mast
 
+      // Shaft fill
+      ctx.fillStyle = '#0d1520';
       ctx.beginPath();
-      ctx.moveTo(x - baseW, y);
-      ctx.lineTo(x - baseW + 1, y - towerH * 0.25);
-      ctx.lineTo(x - topW - 1, y - towerH * 0.65);
-      ctx.lineTo(x - topW, topY);
-      ctx.lineTo(x + topW, topY);
-      ctx.lineTo(x + topW + 1, y - towerH * 0.65);
-      ctx.lineTo(x + baseW - 1, y - towerH * 0.25);
-      ctx.lineTo(x + baseW, y);
+      ctx.moveTo(x - baseHW, y);
+      // Base to just below platform
+      ctx.lineTo(x - baseHW + 0.5, y - towerH * 0.35);
+      ctx.lineTo(x - midHW - 1, y - towerH * 0.42); // widen slightly at platform base
+      // Platform bottom edge
+      ctx.lineTo(x - midHW - 1, y - towerH * 0.42);
+      // Above platform, narrow
+      ctx.lineTo(x - midHW + 1, y - towerH * 0.56);
+      // Continue narrowing to restaurant
+      ctx.lineTo(x - topHW - 0.5, y - towerH * 0.62);
+      // Above restaurant
+      ctx.lineTo(x - topHW + 0.5, y - towerH * 0.74);
+      ctx.lineTo(x - antHW, topY);
+      // Right side (mirror)
+      ctx.lineTo(x + antHW, topY);
+      ctx.lineTo(x + topHW - 0.5, y - towerH * 0.74);
+      ctx.lineTo(x + topHW + 0.5, y - towerH * 0.62);
+      ctx.lineTo(x + midHW - 1, y - towerH * 0.56);
+      ctx.lineTo(x + midHW + 1, y - towerH * 0.42);
+      ctx.lineTo(x + baseHW - 0.5, y - towerH * 0.35);
+      ctx.lineTo(x + baseHW, y);
       ctx.closePath();
       ctx.fill();
 
-      // Shaft outline (accent)
-      ctx.strokeStyle = `${AD}0.7)`;
+      // Shaft outline — accent green
+      ctx.strokeStyle = `${AD}0.65)`;
       ctx.lineWidth = 1.5;
+      // Left outline
       ctx.beginPath();
-      ctx.moveTo(x - baseW, y);
-      ctx.lineTo(x - baseW + 1, y - towerH * 0.25);
-      ctx.lineTo(x - topW - 1, y - towerH * 0.65);
-      ctx.lineTo(x - topW, topY);
+      ctx.moveTo(x - baseHW, y);
+      ctx.lineTo(x - baseHW + 0.5, y - towerH * 0.35);
+      ctx.lineTo(x - midHW - 1, y - towerH * 0.42);
       ctx.stroke();
       ctx.beginPath();
-      ctx.moveTo(x + baseW, y);
-      ctx.lineTo(x + baseW - 1, y - towerH * 0.25);
-      ctx.lineTo(x + topW + 1, y - towerH * 0.65);
-      ctx.lineTo(x + topW, topY);
+      ctx.moveTo(x - midHW + 1, y - towerH * 0.56);
+      ctx.lineTo(x - topHW - 0.5, y - towerH * 0.62);
+      ctx.lineTo(x - topHW + 0.5, y - towerH * 0.74);
+      ctx.lineTo(x - antHW, topY);
+      ctx.stroke();
+      // Right outline
+      ctx.beginPath();
+      ctx.moveTo(x + baseHW, y);
+      ctx.lineTo(x + baseHW - 0.5, y - towerH * 0.35);
+      ctx.lineTo(x + midHW + 1, y - towerH * 0.42);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x + midHW - 1, y - towerH * 0.56);
+      ctx.lineTo(x + topHW + 0.5, y - towerH * 0.62);
+      ctx.lineTo(x + topHW - 0.5, y - towerH * 0.74);
+      ctx.lineTo(x + antHW, topY);
       ctx.stroke();
 
-      // ── Observation basket (large, distinctive) ──
-      const deckY = y - towerH * 0.52;
-      const deckW = 14;
-      const deckH = 22;
-      ctx.fillStyle = '#0e1620';
-      ctx.strokeStyle = `${AD}0.6)`;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.ellipse(x, deckY, deckW, deckH, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
+      // ── MAIN OBSERVATION PLATFORM — flat cylindrical disc ──
+      // This is the iconic shape: a wide, flat disc (like a UFO / stack of pancakes)
+      const platY = y - towerH * 0.49; // center of platform
+      const platW = 18;  // half-width (much wider than shaft)
+      const platH = 14;  // total height of platform section
+      const numRings = 5; // stacked rings
 
-      // Deck ring bands
-      ctx.strokeStyle = `${AD}0.25)`;
-      ctx.lineWidth = 0.5;
-      for (let ring = -2; ring <= 2; ring++) {
+      ctx.fillStyle = '#10192a';
+      // Draw as stacked horizontal rectangles (flat cylinder seen from side)
+      for (let r = 0; r < numRings; r++) {
+        const frac = r / (numRings - 1); // 0..1
+        // Width: widest at middle, tapers at top and bottom
+        const ringW = platW * (1 - Math.pow(frac * 2 - 1, 2) * 0.35);
+        const ringY = platY - platH / 2 + r * (platH / (numRings - 1));
+        const ringH = platH / numRings + 0.5;
+
+        ctx.fillStyle = r === 2 ? '#0f1c2e' : '#0c1622'; // middle ring slightly lighter
+        ctx.fillRect(x - ringW, ringY - ringH / 2, ringW * 2, ringH);
+
+        // Ring outline
+        ctx.strokeStyle = `${AD}${r === 2 ? 0.5 : 0.3})`;
+        ctx.lineWidth = 0.6;
         ctx.beginPath();
-        ctx.ellipse(x, deckY + ring * 5, deckW - 1, 2, 0, 0, Math.PI * 2);
+        ctx.moveTo(x - ringW, ringY - ringH / 2);
+        ctx.lineTo(x + ringW, ringY - ringH / 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x - ringW, ringY + ringH / 2);
+        ctx.lineTo(x + ringW, ringY + ringH / 2);
         ctx.stroke();
       }
 
-      // Illuminated windows (decimal clock)
-      for (let i = 0; i < 12; i++) {
-        const angle = (i / 12) * Math.PI * 2 + t * 0.0004;
-        const wx = x + Math.cos(angle) * (deckW - 3);
-        const wy = deckY + Math.sin(angle) * (deckH - 4);
-        const on = Math.sin(t * 0.002 + i * 0.8) > 0 ? 0.7 : 0.2;
+      // Platform outer edge outlines (left + right vertical)
+      ctx.strokeStyle = `${AD}0.5)`;
+      ctx.lineWidth = 0.8;
+      const platTop = platY - platH / 2;
+      const platBot = platY + platH / 2;
+      // Left edge curve
+      ctx.beginPath();
+      ctx.moveTo(x - platW * 0.65, platTop);
+      ctx.quadraticCurveTo(x - platW * 1.05, platY, x - platW * 0.65, platBot);
+      ctx.stroke();
+      // Right edge curve
+      ctx.beginPath();
+      ctx.moveTo(x + platW * 0.65, platTop);
+      ctx.quadraticCurveTo(x + platW * 1.05, platY, x + platW * 0.65, platBot);
+      ctx.stroke();
+
+      // Window band (illuminated strip around middle ring)
+      ctx.fillStyle = `${AD}0.15)`;
+      ctx.fillRect(x - platW + 2, platY - 1.5, (platW - 2) * 2, 3);
+
+      // Decimal clock lights on the middle ring
+      for (let i = 0; i < 16; i++) {
+        const lx = x - platW + 3 + i * ((platW * 2 - 6) / 15);
+        const on = Math.sin(t * 0.0018 + i * 0.6) > 0 ? 0.65 : 0.1;
         ctx.fillStyle = `${AD}${on})`;
         ctx.beginPath();
-        ctx.arc(wx, wy, 1.5, 0, Math.PI * 2);
+        ctx.arc(lx, platY, 1.2, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // ── Restaurant basket (smaller, above) ──
-      const restY = y - towerH * 0.63;
-      ctx.fillStyle = '#0c1218';
-      ctx.strokeStyle = `${AD}0.4)`;
-      ctx.lineWidth = 0.8;
-      ctx.beginPath();
-      ctx.ellipse(x, restY, 8, 12, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
+      // ── RESTAURANT SECTION — smaller flat cylinder above ──
+      const restY = y - towerH * 0.64;
+      const restW = 10;
+      const restH = 8;
+      const restRings = 3;
+
+      for (let r = 0; r < restRings; r++) {
+        const frac = r / (restRings - 1);
+        const rW = restW * (1 - Math.pow(frac * 2 - 1, 2) * 0.3);
+        const rY = restY - restH / 2 + r * (restH / (restRings - 1));
+        const rH = restH / restRings + 0.3;
+
+        ctx.fillStyle = '#0c1622';
+        ctx.fillRect(x - rW, rY - rH / 2, rW * 2, rH);
+        ctx.strokeStyle = `${AD}0.25)`;
+        ctx.lineWidth = 0.4;
+        ctx.beginPath();
+        ctx.moveTo(x - rW, rY);
+        ctx.lineTo(x + rW, rY);
+        ctx.stroke();
+      }
+
+      // ── Decimal clock LEDs on shaft (Lichtzeitpegel) ──
+      // The real tower has LED dots running down the shaft showing the time
+      ctx.fillStyle = `${AD}0.12)`;
+      const clockDots = [
+        // Hours (2 dots)
+        { y: y - towerH * 0.30, count: 2 },
+        // Minutes (4 dots)
+        { y: y - towerH * 0.25, count: 4 },
+        // Seconds (4 dots)
+        { y: y - towerH * 0.20, count: 4 },
+      ];
+      for (const cd of clockDots) {
+        for (let d = 0; d < cd.count; d++) {
+          const dotOn = Math.sin(t * 0.001 + d * 1.5 + cd.y * 0.1) > 0.3 ? 0.4 : 0.06;
+          ctx.fillStyle = `${AD}${dotOn})`;
+          ctx.beginPath();
+          ctx.arc(x + (d - cd.count / 2 + 0.5) * 2.5, cd.y, 0.8, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
 
       // ── Antenna mast ──
       ctx.strokeStyle = `${AD}0.5)`;
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(x, topY);
-      ctx.lineTo(x, topY - 25);
+      ctx.lineTo(x, topY - 28);
       ctx.stroke();
 
-      // Antenna arms
+      // Antenna cross-arms (progressively shorter)
       ctx.lineWidth = 0.5;
-      const arms = [7, 13, 18];
-      for (const ay of arms) {
-        const armW = 5 - ay * 0.2;
+      const armPositions = [
+        { y: 6, w: 6 }, { y: 12, w: 4.5 }, { y: 18, w: 3 }, { y: 23, w: 2 },
+      ];
+      for (const arm of armPositions) {
         ctx.beginPath();
-        ctx.moveTo(x - armW, topY - ay);
-        ctx.lineTo(x + armW, topY - ay);
+        ctx.moveTo(x - arm.w, topY - arm.y);
+        ctx.lineTo(x + arm.w, topY - arm.y);
         ctx.stroke();
       }
 
-      // ── BLINKING RED LIGHT ──
-      const blink = Math.sin(t * 0.005) > 0.2 ? 0.9 : 0.12;
-      ctx.fillStyle = `rgba(255,30,30,${blink})`;
+      // ── BLINKING RED AVIATION LIGHT ──
+      const blink = Math.sin(t * 0.005) > 0.2 ? 0.9 : 0.1;
+      ctx.fillStyle = `rgba(255,25,25,${blink})`;
       ctx.beginPath();
-      ctx.arc(x, topY - 25, 2.5, 0, Math.PI * 2);
+      ctx.arc(x, topY - 28, 2.5, 0, Math.PI * 2);
       ctx.fill();
+      // Red glow
       if (blink > 0.5) {
-        const lg = ctx.createRadialGradient(x, topY - 25, 2, x, topY - 25, 12);
-        lg.addColorStop(0, `rgba(255,30,30,0.2)`);
-        lg.addColorStop(1, `rgba(255,30,30,0)`);
+        const lg = ctx.createRadialGradient(x, topY - 28, 2, x, topY - 28, 15);
+        lg.addColorStop(0, 'rgba(255,25,25,0.25)');
+        lg.addColorStop(1, 'rgba(255,25,25,0)');
         ctx.fillStyle = lg;
         ctx.beginPath();
-        ctx.arc(x, topY - 25, 12, 0, Math.PI * 2);
+        ctx.arc(x, topY - 28, 15, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // ── Base building ──
-      ctx.fillStyle = '#0a0f16';
-      ctx.fillRect(x - 12, y - 10, 24, 10);
+      // Secondary blinking lights on shaft (lower, alternating)
+      const blink2 = Math.sin(t * 0.005 + 1.5) > 0.3 ? 0.5 : 0.05;
+      ctx.fillStyle = `rgba(255,25,25,${blink2})`;
+      ctx.beginPath();
+      ctx.arc(x, y - towerH * 0.75, 1.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // ── Base platform / building ──
+      ctx.fillStyle = '#0a1018';
+      ctx.fillRect(x - 14, y - 10, 28, 10);
       ctx.strokeStyle = `${AD}0.2)`;
       ctx.lineWidth = 0.5;
-      ctx.strokeRect(x - 12, y - 10, 24, 10);
+      ctx.strokeRect(x - 14, y - 10, 28, 10);
     }
 
     // ── Landtag (Parliament — low, modern, flat roof) ──
