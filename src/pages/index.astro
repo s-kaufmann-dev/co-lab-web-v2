@@ -5,7 +5,8 @@ import BentoPortfolio from '../components/react/BentoPortfolio.jsx';
 import ServicesSection from '../components/react/ContainerScroll.jsx';
 import ShaderBackground from '../components/react/ShaderBackground.jsx';
 import AnimatedTestimonials from '../components/react/AnimatedTestimonials.jsx';
-import { MagneticButton, Highlighter } from '../components/react/InteractiveElements.jsx';
+import InteractiveFooter from '../components/react/InteractiveFooter.jsx';
+import { GradientGlowButton, Highlighter } from '../components/react/InteractiveElements.jsx';
 ---
 
 <Layout title="Co-Lab-Web | Neural Design & Boutique Automation">
@@ -40,7 +41,7 @@ import { MagneticButton, Highlighter } from '../components/react/InteractiveElem
 						<p class="text-neutral-500 font-mono text-xs uppercase tracking-widest">Logic // Brutalism & Performance</p>
 						<p class="text-neutral-500 font-mono text-xs uppercase tracking-widest">Status // Digital Native</p>
 					</div>
-					<MagneticButton client:only="react" className="w-fit">Start Collaboration</MagneticButton>
+					<GradientGlowButton client:only="react" className="w-fit">Start Collaboration</GradientGlowButton>
 				</div>
 			</div>
 		</div>
@@ -52,41 +53,41 @@ import { MagneticButton, Highlighter } from '../components/react/InteractiveElem
 
 	<AnimatedTestimonials client:only="react" />
 
-	<footer class="py-32 px-[5vw] bg-black border-t border-white/5 relative z-10">
-		<div class="flex flex-col lg:flex-row justify-between items-start gap-24">
-			<div class="max-w-xl">
-				<h2 class="text-6xl font-black uppercase tracking-[-0.08em] mb-8 leading-none">Co-Lab<br/>Web</h2>
-				<p class="text-neutral-500 text-lg font-medium leading-tight mb-12">
-					Designed and engineered for those who demand technical excellence and visual provocation.
-				</p>
-				<div class="flex gap-4">
-					<div class="w-3 h-3 rounded-full bg-accent animate-pulse"></div>
-					<span class="text-xs font-mono uppercase tracking-widest text-neutral-600">All systems operational</span>
-				</div>
-			</div>
-			
-			<div class="grid grid-cols-2 md:grid-cols-3 gap-16 lg:gap-32 w-full lg:w-auto">
-				<div class="flex flex-col gap-6">
-					<span class="text-[0.6rem] uppercase tracking-[0.4em] text-accent font-mono">Socials</span>
-					<a href="#" class="text-xl font-bold uppercase tracking-tighter hover:text-accent transition-colors">LinkedIn</a>
-					<a href="#" class="text-xl font-bold uppercase tracking-tighter hover:text-accent transition-colors">Instagram</a>
-					<a href="#" class="text-xl font-bold uppercase tracking-tighter hover:text-accent transition-colors">GitHub</a>
-				</div>
-				<div class="flex flex-col gap-6">
-					<span class="text-[0.6rem] uppercase tracking-[0.4em] text-accent font-mono">Contact</span>
-					<a href="mailto:hello@co-lab-web.de" class="text-xl font-bold uppercase tracking-tighter hover:text-accent transition-colors">hello@co-lab-web.de</a>
-					<a href="#" class="text-xl font-bold uppercase tracking-tighter hover:text-accent transition-colors">Book a Call</a>
-				</div>
-				<div class="flex flex-col gap-6 hidden md:flex">
-					<span class="text-[0.6rem] uppercase tracking-[0.4em] text-accent font-mono">Legal</span>
-					<a href="#" class="text-xs font-mono uppercase tracking-widest hover:text-white transition-colors">Imprint</a>
-					<a href="#" class="text-xs font-mono uppercase tracking-widest hover:text-white transition-colors">Privacy</a>
-				</div>
-			</div>
-		</div>
+	<footer class="bg-black border-t border-white/5 relative z-10">
+		<InteractiveFooter client:only="react" />
 		
-		<div class="mt-48 text-[22vw] font-black uppercase leading-[0.7] opacity-[0.03] select-none pointer-events-none tracking-[-0.1em] text-center w-full">
-			CO-LAB-WEB
+		<div class="py-12 px-[5vw] border-t border-white/5">
+			<div class="flex flex-col lg:flex-row justify-between items-start gap-16">
+				<div class="max-w-xl">
+					<h2 class="text-4xl font-black uppercase tracking-[-0.06em] mb-4 leading-none">Co-Lab-Web</h2>
+					<p class="text-neutral-600 text-sm font-medium leading-tight mb-6">
+						Designed & engineered for those who demand excellence.
+					</p>
+					<div class="flex gap-3 items-center">
+						<div class="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
+						<span class="text-xs font-mono uppercase tracking-widest text-neutral-700">All systems operational</span>
+					</div>
+				</div>
+				
+				<div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-24">
+					<div class="flex flex-col gap-4">
+						<span class="text-[0.6rem] uppercase tracking-[0.4em] text-accent font-mono">Socials</span>
+						<a href="#" class="text-sm font-bold uppercase tracking-tighter hover:text-accent transition-colors">LinkedIn</a>
+						<a href="#" class="text-sm font-bold uppercase tracking-tighter hover:text-accent transition-colors">Instagram</a>
+						<a href="#" class="text-sm font-bold uppercase tracking-tighter hover:text-accent transition-colors">GitHub</a>
+					</div>
+					<div class="flex flex-col gap-4">
+						<span class="text-[0.6rem] uppercase tracking-[0.4em] text-accent font-mono">Contact</span>
+						<a href="mailto:hello@co-lab-web.de" class="text-sm font-bold uppercase tracking-tighter hover:text-accent transition-colors">hello@co-lab-web.de</a>
+						<a href="#" class="text-sm font-bold uppercase tracking-tighter hover:text-accent transition-colors">Book a Call</a>
+					</div>
+					<div class="flex-col gap-4 hidden md:flex">
+						<span class="text-[0.6rem] uppercase tracking-[0.4em] text-accent font-mono">Legal</span>
+						<a href="#" class="text-xs font-mono uppercase tracking-widest text-neutral-600 hover:text-white transition-colors">Imprint</a>
+						<a href="#" class="text-xs font-mono uppercase tracking-widest text-neutral-600 hover:text-white transition-colors">Privacy</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</footer>
 </Layout>
