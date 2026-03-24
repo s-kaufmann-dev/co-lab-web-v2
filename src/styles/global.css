@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0 0;
+  --foreground: 255 255 255;
+  --accent: 0 255 102; /* Neon Green */
+  --accent-blue: 0 102 255;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-accent selection:text-background;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-[-0.05em] leading-[0.85] font-black uppercase;
+  }
+
+  p {
+    @apply leading-tight tracking-tight;
+  }
+
+  .mono {
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+/* Custom Cursor Refinement */
+.custom-cursor {
+  @apply fixed top-0 left-0 w-4 h-4 rounded-full pointer-events-none z-[9999] mix-blend-difference;
+  background-color: white;
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+}
+
+.custom-cursor.scale-150 {
+  @apply w-12 h-12;
+}
+
+/* Smooth Scroll Layout */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+/* Hide scrollbar but keep functionality */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

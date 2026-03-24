@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Co-Lab-Web Design Agency" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Fira+Code&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-background text-foreground">
+		<div id="custom-cursor" class="custom-cursor"></div>
+		<main id="main-content">
+			<slot />
+		</main>
+
+		<script>
+			import Lenis from '@studio-freight/lenis';
+
+			// Initialize Lenis
+			const lenis = new Lenis({
+				duration: 1.2,
+				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+				orientation: 'vertical',
+				gestureOrientation: 'vertical',
+				smoothWheel: true,
+				wheelMultiplier: 1,
+				smoothTouch: false,
+				touchMultiplier: 2,
+				infinite: false,
+			});
+
+			function raf(time: number) {
+				lenis.raf(time);
+				requestAnimationFrame(raf);
+			}
+
+			requestAnimationFrame(raf);
+
+			// Custom Cursor Logic
+			const cursor = document.getElementById('custom-cursor');
+			document.addEventListener('mousemove', (e) => {
+				if (cursor) {
+					cursor.style.transform = `translate3d(${e.clientX - 16}px, ${e.clientY - 16}px, 0)`;
+				}
+			});
+
+			// Cursor Hover Effects
+			document.querySelectorAll('a, button, .interactive').forEach((el) => {
+				el.addEventListener('mouseenter', () => {
+					cursor?.classList.add('scale-150', 'bg-accent');
+				});
+				el.addEventListener('mouseleave', () => {
+					cursor?.classList.remove('scale-150', 'bg-accent');
+				});
+			});
+		</script>
+	</body>
+</html>
